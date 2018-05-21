@@ -1,9 +1,6 @@
 package com.joelenpastva.Assignment5;
 
 import com.joelenpastva.Assignment5.models.Planet;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -37,6 +37,7 @@ public class DataStore {
     }
 
     public static SessionFactory getSessionFactory() {
+
         return sessionFactory;
     }
 
