@@ -2,6 +2,8 @@ package com.joelenpastva.Assignment5.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "PLANETVISIT")
 public class Visit {
 
     public Visit() {}

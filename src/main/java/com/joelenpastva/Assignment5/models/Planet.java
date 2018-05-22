@@ -1,8 +1,9 @@
 package com.joelenpastva.Assignment5.models;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "PLANET")
 public class Planet {
 
     @Id

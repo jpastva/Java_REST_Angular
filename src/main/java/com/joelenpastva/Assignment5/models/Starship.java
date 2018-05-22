@@ -1,9 +1,9 @@
 package com.joelenpastva.Assignment5.models;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "STARSHIP")
 public class Starship {
 
     public Starship() {}
