@@ -1,10 +1,7 @@
 package com.joelenpastva.Assignment5;
 
 import com.joelenpastva.Assignment5.models.Visit;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +13,9 @@ public class VisitController {
         return DataStore.listVisits();
     }
 
-    /*@PostMapping("/visit")
-    public Visit updateVisit*/
+    @PostMapping("/visits/")
+    public void createVisit(@RequestBody Visit visitToAdd) {
+        DataStore.saveVisit(visitToAdd);
+    }
 
 }

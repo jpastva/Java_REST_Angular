@@ -162,6 +162,19 @@ public class DataStore {
     public static void savePlanet(Planet planetToAdd) {
         Session session = getSessionFactory().openSession();
         session.save(planetToAdd);
+        session.close();
+    }
+
+    public static void saveStarship(Starship starshipToAdd) {
+        Session session = getSessionFactory().openSession();
+        session.save(starshipToAdd);
+        session.close();
+    }
+
+    public static void saveVisit(Visit visitToAdd) {
+        Session session = getSessionFactory().openSession();
+        session.save(visitToAdd);
+        session.close();
     }
 
     public static void deletePlanet(int planetId) {
