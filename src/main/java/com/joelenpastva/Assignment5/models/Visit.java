@@ -8,11 +8,19 @@ public class Visit {
 
     public Visit() {}
 
-    @ManyToOne
-    private Starship starship;
 
-    @ManyToOne
-    private Planet planet;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "VISITID")
+    private String visitId;
+
+    @Column(name = "STARSHIPID")
+    private String starshipId;
+
+
+    @Column(name = "PLANETID")
+    private String planetId;
+
 
     @Column(name = "ARRIVALSTARDATE")
     private int arrivalStarDate;
@@ -20,20 +28,26 @@ public class Visit {
     @Column(name = "DEPARTURESTARDATE")
     private int departureStarDate;
 
-    public Starship getStarship() {
-        return starship;
+
+    public String getVisitId() {
+        return visitId;
     }
 
-    public void setStarship(Starship starship) {
-        this.starship = starship;
+    public String getStarshipId() {
+        return starshipId;
     }
 
-    public Planet getPlanet() {
-        return planet;
+    public void setStarship(String starshipId)
+    {
+        this.starshipId = starshipId;
     }
 
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
+    public String getPlanetId() {
+        return planetId;
+    }
+
+    public void setPlanetId(String planetId) {
+        this.planetId = planetId;
     }
 
     public int getArrivalStarDate() {

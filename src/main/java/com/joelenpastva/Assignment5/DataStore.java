@@ -46,7 +46,7 @@ public class DataStore {
         Session session = getSessionFactory().openSession();
 
         try {
-            return session.createQuery("FROM PLANET").list();
+            return session.createQuery("FROM Planet").list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -59,7 +59,7 @@ public class DataStore {
         Session session = getSessionFactory().openSession();
 
         try {
-            return session.createQuery("FROM STARSHIP").list();
+            return session.createQuery("FROM Starship").list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -72,7 +72,7 @@ public class DataStore {
         Session session = getSessionFactory().openSession();
 
         try {
-            return session.createQuery("FROM PLANETVISIT").list();
+            return session.createQuery("FROM Visit").list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
