@@ -50,4 +50,12 @@ public class Planet {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+
+    public String getAtmosphere() {
+        return atmosphere;
+    }
+
+    public void setAtmosphere(String atmosphere) {
+        this.atmosphere = atmosphere;
+    }
 }

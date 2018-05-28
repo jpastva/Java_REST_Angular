@@ -18,13 +18,13 @@ public class StarshipController {
         return DataStore.findStarshipById(starshipId);
     }
 
-    @PostMapping("/starships/")
-    public void createStarship(@RequestBody Starship starshipToAdd) {
-        DataStore.saveStarship(starshipToAdd);
+    @PostMapping("/starships")
+    public Starship createStarship(@RequestBody Starship starshipToAdd) {
+        return DataStore.saveStarship(starshipToAdd);
     }
 
     @PutMapping("/starships/{id}")
-    public Starship updateExistingStarship(@PathVariable(value = "id") int starshipId,@RequestBody Starship starshipToUpdate) {
+    public Starship updateExistingStarship(@PathVariable(value = "id") int starshipId, @RequestBody Starship starshipToUpdate) {
         return DataStore.updateStarship(starshipId, starshipToUpdate);
     }
 

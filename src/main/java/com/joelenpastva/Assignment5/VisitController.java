@@ -14,8 +14,8 @@ public class VisitController {
     }
 
     @PostMapping("/visits/")
-    public void createVisit(@RequestBody Visit visitToAdd) {
-        DataStore.saveVisit(visitToAdd);
+    public Visit createVisit(@RequestBody Visit visitToAdd) {
+        return DataStore.saveVisit(visitToAdd);
     }
 
 }

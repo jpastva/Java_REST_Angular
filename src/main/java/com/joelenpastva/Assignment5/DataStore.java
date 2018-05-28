@@ -114,10 +114,16 @@ public class DataStore {
         try {
             tx = session.beginTransaction();
             Planet existing = findPlanetById(planetId);
-            if (existing != null && planetId == planetToUpdate.getId())
-                existing = planetToUpdate;
+            existing.setId(planetToUpdate.getId());
+            existing.setName(planetToUpdate.getName());
+            existing.setRadius(planetToUpdate.getRadius());
+            existing.setAtmosphere(planetToUpdate.getAtmosphere());
+
+            session.update(existing);
             tx.commit();
-            return planetToUpdate;
+
+            return existing;
+
         } catch (HibernateException e) {
             if (tx != null)
                 tx.rollback();
@@ -142,11 +148,11 @@ public class DataStore {
             existing.setShipClass(starshipToUpdate.getShipClass());
             existing.setLaunchStarDate(starshipToUpdate.getLaunchStarDate());
 
-            session.persist(existing);
-
-            if (existing != null && starshipId == starshipToUpdate.getId())
-                existing = starshipToUpdate;
+            session.update(existing);
             tx.commit();
+
+            return existing;
+
         } catch (HibernateException e) {
             if (tx != null)
                 tx.rollback();
@@ -159,22 +165,84 @@ public class DataStore {
         return null;
     }
 
-    public static void savePlanet(Planet planetToAdd) {
+    public static Planet savePlanet(Planet planetToAdd) {
         Session session = getSessionFactory().openSession();
-        session.save(planetToAdd);
-        session.close();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Planet newPlanet = new Planet();
+            newPlanet.setId(planetToAdd.getId());
+            newPlanet.setName(planetToAdd.getName());
+            newPlanet.setRadius(planetToAdd.getRadius());
+            newPlanet.setAtmosphere(planetToAdd.getAtmosphere());
+            session.save(newPlanet);
+
+            tx.commit();
+
+            return newPlanet;
+        } catch (HibernateException e) {
+            if(tx != null) {
+                tx.rollback();
+            } e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
     }
 
-    public static void saveStarship(Starship starshipToAdd) {
+    public static Starship saveStarship(Starship starshipToAdd) {
         Session session = getSessionFactory().openSession();
-        session.save(starshipToAdd);
-        session.close();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Starship newStarship = new Starship();
+            newStarship.setId(starshipToAdd.getId());
+            newStarship.setName(starshipToAdd.getName());
+            newStarship.setShipClass(starshipToAdd.getShipClass());
+            newStarship.setLaunchStarDate(starshipToAdd.getLaunchStarDate());
+            session.save(newStarship);
+
+            tx.commit();
+
+            return newStarship;
+        } catch (HibernateException e) {
+            if(tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
 
-    public static void saveVisit(Visit visitToAdd) {
+    public static Visit saveVisit(Visit visitToAdd) {
         Session session = getSessionFactory().openSession();
-        session.save(visitToAdd);
-        session.close();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Visit newVisit = new Visit();
+            newVisit.setVisitId(visitToAdd.getVisitId());
+            newVisit.setPlanetId(visitToAdd.getPlanetId());
+            newVisit.setStarshipId(visitToAdd.getStarshipId());
+            newVisit.setArrivalStarDate(visitToAdd.getArrivalStarDate());
+            newVisit.setDepartureStarDate(visitToAdd.getDepartureStarDate());
+            session.save(newVisit);
+
+            tx.commit();
+
+            return newVisit;
+        } catch (HibernateException e) {
+            if(tx != null) {
+                tx.rollback();
+            } e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
 
     public static void deletePlanet(int planetId) {
@@ -184,8 +252,8 @@ public class DataStore {
         try {
             tx = session.beginTransaction();
             Planet planetToDelete = findPlanetById(planetId);
-            if (planetToDelete != null && planetId == planetToDelete.getId())
-                session.delete(planetToDelete);
+
+            session.delete(planetToDelete);
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -201,8 +269,8 @@ public class DataStore {
         try {
             tx = session.beginTransaction();
             Starship starshipToDelete = findStarshipById(starshipId);
-            if (starshipToDelete != null && starshipId == starshipToDelete.getId())
-                session.delete(starshipToDelete);
+
+            session.delete(starshipToDelete);
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();

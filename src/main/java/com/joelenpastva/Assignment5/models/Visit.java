@@ -33,11 +33,15 @@ public class Visit {
         return visitId;
     }
 
+    public void setVisitId(String visitId) {
+        this.visitId = visitId;
+    }
+
     public String getStarshipId() {
         return starshipId;
     }
 
-    public void setStarship(String starshipId)
+    public void setStarshipId(String starshipId)
     {
         this.starshipId = starshipId;
     }

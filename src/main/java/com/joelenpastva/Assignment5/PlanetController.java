@@ -19,8 +19,8 @@ public class PlanetController {
     }
 
     @PostMapping("/planets/")
-    public void createPlanet(@RequestBody Planet planetToAdd) {
-        DataStore.savePlanet(planetToAdd);
+    public Planet createPlanet(@RequestBody Planet planetToAdd) {
+        return DataStore.savePlanet(planetToAdd);
     }
 
     @PutMapping("/planets/{id}")
