@@ -7,14 +7,21 @@
 </head>
 <body ng-app="myApp" ng-controller="appController">
 
-    First Name: <input type="text" ng-model="firstName"><br>
-    Last Name: <input type="text" ng-model="lastName"><br>
-    <br>
-    Full Name: {{firstName + " " + lastName}}
-    <br>
-
-    <h1 ng-repeat="x in reps">{{x.lastName}}</h1>
-
+    <h3>Planets</h3>
+    <table border = "1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Radius</th>
+            <th>Atmosphere</th>
+        </tr>
+        <tr ng-repeat="planet in planets">
+            <td>{{planet.planetId}}</td>
+            <td>{{planet.planetName}}</td>
+            <td>{{planet.radius}}</td>
+            <td>{{planet.atmosphere}}</td>
+        </tr>
+    </table>
 
     <script src="./js/app.js"></script>
     <script src="./js/controller.js"></script>

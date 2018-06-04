@@ -1,18 +1,15 @@
 package com.joelenpastva.Assignment5.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "PLANETVISIT")
 public class Visit {
 
     public Visit() {}
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "VISITID")
-    private String visitId;
 
     @Column(name = "STARSHIPID")
     private String starshipId;
@@ -21,21 +18,13 @@ public class Visit {
     @Column(name = "PLANETID")
     private String planetId;
 
-
+    @Id
     @Column(name = "ARRIVALSTARDATE")
     private int arrivalStarDate;
 
     @Column(name = "DEPARTURESTARDATE")
     private int departureStarDate;
 
-
-    public String getVisitId() {
-        return visitId;
-    }
-
-    public void setVisitId(String visitId) {
-        this.visitId = visitId;
-    }
 
     public String getStarshipId() {
         return starshipId;

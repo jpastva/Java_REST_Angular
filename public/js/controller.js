@@ -1,5 +1,9 @@
 app.controller('appController', ["$scope", "$log", "appService",
     function($scope, $log, appService) {
+        $scope.planetId = "";
+        $scope.planetName = "";
+        $scope.radius = "";
+        $scope.atmosphere = "";
         $scope.planets= appService.getPlanets();
 
         $scope.loadPlanets = function () {

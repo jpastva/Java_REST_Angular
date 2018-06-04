@@ -225,7 +225,6 @@ public class DataStore {
         try {
             tx = session.beginTransaction();
             Visit newVisit = new Visit();
-            newVisit.setVisitId(visitToAdd.getVisitId());
             newVisit.setPlanetId(visitToAdd.getPlanetId());
             newVisit.setStarshipId(visitToAdd.getStarshipId());
             newVisit.setArrivalStarDate(visitToAdd.getArrivalStarDate());
