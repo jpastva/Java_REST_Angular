@@ -4,4 +4,8 @@ app.service('appService', ["$http", function ($http) {
         return $http.get("planets");
     };
 
+    this.getVisits = function () {
+        return $http.get("visits");
+    };
+
 }]);

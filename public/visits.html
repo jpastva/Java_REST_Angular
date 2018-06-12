@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<meta charset ="UTF-8">
+	<title>Planet Visits</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="visitController">
+	<h3>Planet Visits</h3>
+	<table border= "1">
+		<tr>
+			<th>Planet Id</th>
+			<th>Starship Id</th>
+			<th>Arrival Stardate</th>
+			<th>Departure Stardate</th>
+		</tr>
+		<tr ng-repeat="visit in visits">
+			<td>{{visit.starshipId}}</td>
+			<td>{{visit.planetId}}</td>
+			<td>{{visit.arrivalStarDate}}</td>
+			<td>{{visit.departureStarDate}}</td>
+		</tr>
+	</table>
+
+	<script src="./js/app.js"></script>
+    <script src="./js/visitController.js"></script>
+    <script src="./js/service.js"></script>
+
+</body>
+</html>
